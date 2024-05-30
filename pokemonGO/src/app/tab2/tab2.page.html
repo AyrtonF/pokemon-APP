@@ -1,0 +1,66 @@
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Batalha</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row class="ion-wrap">
+      <ion-col size="6" size-md="6" *ngIf="pokemonTab1">
+        <ion-card >
+          <ion-card-header>
+            <ion-card-title>{{ pokemonTab1.name | uppercase }} - Pokémon Selecionado</ion-card-title>
+            <ion-img [src]="pokemonTab1.sprites.front_default"></ion-img>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <ion-label>Height: {{ pokemonTab1.height }}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Weight: {{ pokemonTab1.weight }}</ion-label>
+              </ion-item>
+              <ion-item *ngFor="let ability of pokemonTab1.abilities">
+                <ion-label>Ability: {{ ability.ability.name }}</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="6" size-md="6" *ngIf="pokemon">
+        <ion-card class="ion-margin-top">
+          <ion-card-header>
+            <ion-card-title [color]="resultadoCor">{{ pokemon.name | uppercase }} - {{ resultadoBatalha }}</ion-card-title>
+            <ion-img [src]="pokemon.sprites.front_default"></ion-img>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <ion-label>Height: {{ pokemon.height }}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Weight: {{ pokemon.weight }}</ion-label>
+              </ion-item>
+              <ion-item *ngFor="let ability of pokemon.abilities">
+                <ion-label>Ability: {{ ability.ability.name }}</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="adicionarFotoNaGaleria()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-button expand="block" fill="solid" (click)="buscarPokemonAleatorio()">
+    Batalhar
+    <ion-icon name="sword" slot="end"></ion-icon>
+  </ion-button>
+</ion-content>
