@@ -3,9 +3,11 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #b0ffa9; /* Cor de fundo da mensagem */
-    padding: 10px; /* Espaçamento interno da mensagem */
-    text-align: center; /* Alinhamento do texto */
-    z-index: 9999; /* Garante que a mensagem esteja sempre na frente de outros elementos */
+    background-color: #b0ffa9; 
+    color: black;
+    font-weight: 600;
+    padding: 10px; 
+    text-align: center; 
+    z-index: 9999; 
   }
   

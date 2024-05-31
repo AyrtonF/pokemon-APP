@@ -8,7 +8,9 @@ export class PokemonDataService {
   currentPokemon: any;
   private selectedPokemon: any = null;
 
-  constructor() {}
+  constructor() {
+    this.loadCapturedPokemons();
+  }
 
   getCapturedPokemons() {
     return this.capturedPokemons;
@@ -25,6 +27,7 @@ export class PokemonDataService {
       defeats: 0,
       draws: 0
     });
+    this.saveCapturedPokemons();
   }
 
   updatePokemonStatus(pokemonName: string, result: string) {
@@ -38,6 +41,7 @@ export class PokemonDataService {
         pokemon.draws += 1;
       }
     }
+    this.saveCapturedPokemons();
   }
 
   selectPokemonForBattle(pokemon: any) {
@@ -47,4 +51,34 @@ export class PokemonDataService {
   getSelectedPokemonForBattle() {
     return this.selectedPokemon;
   }
+
+
+  private saveCapturedPokemons() {
+    localStorage.setItem('capturedPokemons', JSON.stringify(this.capturedPokemons));
+  }
+
+  private loadCapturedPokemons() {
+    const storedPokemons = localStorage.getItem('capturedPokemons');
+    if (storedPokemons) {
+      this.capturedPokemons = JSON.parse(storedPokemons);
+    }
+  }
+
+  // getPokemonsByType() {
+  //   const pokemonsByType: { [key: string]: any[] } = {};
+
+  //   this.capturedPokemons.forEach(pokemon => {
+  //     pokemon.types.forEach((type: { type: { name: string } }) => {
+  //       const typeName = type.type.name;
+  //       if (!pokemonsByType[typeName]) {
+  //         pokemonsByType[typeName] = [];
+  //       }
+  //       pokemonsByType[typeName].push(pokemon);
+  //     });
+  //   });
+
+  //   return pokemonsByType;
+  // }
+ 
+
 }

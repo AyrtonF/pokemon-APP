@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonDataService } from '../services/pokemon-data-service.service';
 
+
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
@@ -11,21 +12,41 @@ export class Tab3Page implements OnInit {
   selectedPokemonMessage: string = '';
   showMessage: boolean = false;
 
+  searchTerm: string = '';
+  filteredPokemons: any[] = [];
+
   constructor(private pokemonDataService: PokemonDataService) {}
 
   ngOnInit() {
+    this.loadCapturedPokemons();
+   
+  }
+
+  loadCapturedPokemons() {
     this.capturedPokemons = this.pokemonDataService.getCapturedPokemons();
+    this.filteredPokemons = [...this.capturedPokemons];
   }
 
   getBadgeColor(value: number): string {
 
 
     if (value > 0) {
-      return 'success'; // verde para vitórias
+      return 'success'; 
     } else if (value > 0) {
-      return 'danger'; // vermelho para derrotas
+      return 'danger'; 
     } else {
-      return 'warning'; // amarelo para empates
+      return 'warning'; 
+    }
+  }
+
+  filterPokemons(event: any) {
+    const searchTerm = event.target.value.toLowerCase();
+    if (searchTerm && searchTerm.trim() !== '') {
+      this.filteredPokemons = this.capturedPokemons.filter(pokemon =>
+        pokemon.name.toLowerCase().includes(searchTerm)
+      );
+    } else {
+      this.filteredPokemons = [];
     }
   }
 
@@ -38,4 +59,6 @@ export class Tab3Page implements OnInit {
       this.showMessage = false;
     }, 3000); 
   }
+
+
 }

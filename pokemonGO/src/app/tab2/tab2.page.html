@@ -8,7 +8,7 @@
   <ion-grid>
     <ion-row class="ion-wrap">
       <ion-col size="6" size-md="6" *ngIf="pokemonTab1">
-        <ion-card >
+        <ion-card>
           <ion-card-header>
             <ion-card-title>{{ pokemonTab1.name | uppercase }} - Pokémon Selecionado</ion-card-title>
             <ion-img [src]="pokemonTab1.sprites.front_default"></ion-img>
@@ -53,14 +53,21 @@
     </ion-row>
   </ion-grid>
 
-  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button (click)="adicionarFotoNaGaleria()">
-      <ion-icon name="camera"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-
-  <ion-button expand="block" fill="solid" (click)="buscarPokemonAleatorio()">
-    Batalhar
-    <ion-icon name="sword" slot="end"></ion-icon>
-  </ion-button>
+  <div class="fab-container">
+    <ion-fab class="camera" horizontal="start" slot="fixed">
+      <ion-fab-button (click)="adicionarFotoNaGaleria()">
+        <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+      Camera
+    </ion-fab>
+    
+    <ion-fab class="batalha" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="buscarPokemonAleatorio()">
+        <ion-icon name="flash-outline"></ion-icon>
+      </ion-fab-button>
+      Batalhar
+    </ion-fab>
+  </div>
 </ion-content>
+
+
