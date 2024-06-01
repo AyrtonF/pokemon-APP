@@ -24,9 +24,15 @@
         <ion-col size="6" size-md="6" *ngFor="let pokemon of capturedPokemons">
           <ion-card>
             <ion-card-header>
+          
               <ion-card-title>{{ pokemon.name }}</ion-card-title>
+              <ion-button fill="clear" color="danger" class="remove-button" (click)="removePokemon(pokemon)">
+                <ion-icon slot="icon-only" name="trash"></ion-icon>
+              </ion-button>
             </ion-card-header>
+            
             <ion-card-content>
+              
               <ion-img [src]="pokemon.sprites.front_default"></ion-img>
               <ion-item>
                 <ion-label color="success">Vitórias:</ion-label>
@@ -43,6 +49,7 @@
               <ion-button expand="full" color="primary" (click)="selectPokemon(pokemon)">
                 Selecionar para Batalha
               </ion-button>
+             
             </ion-card-content>
           </ion-card>
         </ion-col>
@@ -52,7 +59,11 @@
         <ion-col size="6" size-md="6" *ngFor="let pokemon of filteredPokemons">
           <ion-card>
             <ion-card-header>
+              <ion-button fill="clear" color="danger" class="remove-button" (click)="removePokemon(pokemon)">
+                <ion-icon slot="icon-only" name="trash"></ion-icon>
+              </ion-button>
               <ion-card-title>{{ pokemon.name }}</ion-card-title>
+              
             </ion-card-header>
             <ion-card-content>
               <ion-img [src]="pokemon.sprites.front_default"></ion-img>
@@ -71,6 +82,7 @@
               <ion-button expand="full" color="primary" (click)="selectPokemon(pokemon)">
                 Selecionar para Batalha
               </ion-button>
+            
             </ion-card-content>
           </ion-card>
         </ion-col>

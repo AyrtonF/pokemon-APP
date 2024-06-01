@@ -11,3 +11,21 @@
     z-index: 9999; 
   }
   
+
+  ion-card {
+    position: relative;
+  }
+  
+  ion-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  
+  .remove-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 10;
+  }

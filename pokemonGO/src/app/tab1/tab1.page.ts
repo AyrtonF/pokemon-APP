@@ -64,3 +64,5 @@ export class Tab1Page {
     this.pokemonDataService.capturePokemon(this.pokemon);
   }
 }
+
+

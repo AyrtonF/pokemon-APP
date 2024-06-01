@@ -59,7 +59,7 @@ export class Tab2Page implements OnInit {
       this.resultadoBatalha = 'Deu Empate';
       this.pokemonDataService.updatePokemonStatus(this.pokemonTab1.name, 'Empate'); // Atualiza o status do Pokémon na service
       this.resultadoCor = 'warning';
-    } else if (habilidadesTab2 > habilidadesTab1) {
+    } else if (habilidadesTab2 < habilidadesTab1) {
       this.resultadoBatalha = ' Você Ganhou';
       this.pokemonDataService.updatePokemonStatus(this.pokemonTab1.name, 'Vitória'); // Atualiza o status do Pokémon na service
       this.resultadoCor = 'success';

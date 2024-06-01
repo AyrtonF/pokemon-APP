@@ -60,5 +60,10 @@ export class Tab3Page implements OnInit {
     }, 3000); 
   }
 
-
+  removePokemon(pokemon: any) {
+    console.log(`Removendo o Pokémon: ${pokemon.name}`);
+    this.pokemonDataService.removeCapturedPokemon(pokemon);
+    this.loadCapturedPokemons();
+  }
+  
 }

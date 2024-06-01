@@ -64,21 +64,9 @@ export class PokemonDataService {
     }
   }
 
-  // getPokemonsByType() {
-  //   const pokemonsByType: { [key: string]: any[] } = {};
-
-  //   this.capturedPokemons.forEach(pokemon => {
-  //     pokemon.types.forEach((type: { type: { name: string } }) => {
-  //       const typeName = type.type.name;
-  //       if (!pokemonsByType[typeName]) {
-  //         pokemonsByType[typeName] = [];
-  //       }
-  //       pokemonsByType[typeName].push(pokemon);
-  //     });
-  //   });
-
-  //   return pokemonsByType;
-  // }
  
-
+  removeCapturedPokemon(pokemon: any) {
+    this.capturedPokemons = this.capturedPokemons.filter(p => p.name !== pokemon.name);
+    this.saveCapturedPokemons();
+  }
 }
